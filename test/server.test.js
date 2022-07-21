@@ -8,4 +8,4 @@ it("The server must be running on 3000", () => {
         let status = res.status
         expect(status).toEqual(200);
     })
-})
+});

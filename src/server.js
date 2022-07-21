@@ -10,5 +10,5 @@ router.get('/', (req, res) => {
 })
 
 server.listen(3000, () => {
-    console.log("***** RUNNING AT 3000 *****")
+    console.log("***** RUNNING AT 3000 *****");
 })
