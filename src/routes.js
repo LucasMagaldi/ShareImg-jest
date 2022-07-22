@@ -12,8 +12,12 @@ class Routes  {
         });
         
         this.routes.post('/user', (req, res) => {
-            console.log(req)
-            return res.status(500).json({response: false});
+            try {
+             return res.status(200).json({response: 12});   
+            } catch (error) {
+                return res.status(500).json({response: false});
+            }
+            
         });
      
     }

@@ -9,15 +9,11 @@ describe("Insert User", () => {
             name: "Lucas"
         }
 
-        try {
-            const response = request.post('/user')
-                                        .send(user);
-            expect(response.status).toEqual(200);
-            expect(response.body.name).toEqual(6);
-        } catch (error) {
-            
-        }
-
-        
+        return request.post("/user").send(user)
+            .then(res => {
+                expect(res.status).toEqual(200);
+                expect(res.body.response).toEqual(15)
+            })
     });
+
 });
