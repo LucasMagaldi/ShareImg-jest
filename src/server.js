@@ -9,6 +9,6 @@ router.get('/', (req, res) => {
     return res.status(200)
 })
 
-server.listen(3000, () => {
+server.listen(process.env.PORT || 3000, () => {
     console.log("***** RUNNING AT 3000 *****");
 })
