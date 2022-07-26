@@ -3,21 +3,24 @@ import supertest from "supertest";
 const request = supertest(app);
 
 
+
 describe("Insert User", () => {
-    test("Should successfully insert an user", () => {
+    it("Should successfully insert an user", () => {
+       
         let user = {
             name: "Lucas",
-            email: "lucas.magaldi@hotmail.com",
-            password: "lsm"
+            email: "lucas.magaldi@hotmail.commmm",
+            password: "hahahaha"
         }
 
         return request.post("/user").send(user)
             .then(res => {
-                expect(res.status).toEqual(401);
-                expect(res.body.response).toEqual("Your password must contain more then 8 characteres")
+                expect(res.status).toEqual(500);
+                expect(res.body.response).toEqual(true)
             }).catch(err => {
+                console.log(err)
                 throw new Error(err)
             });
-    });
+    }, 90000);
 
 });

@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import connectDB from './DB/connection';
+import connectDB from './DB/connection.js';
 
 import routes from './routes.js';
 
@@ -9,17 +9,18 @@ dotenv.config();
 
 class App {
     constructor() {
+        this.startDB();
         this.server = express();
         this.MiddlewareConfig();
         this.Cors();
         this.Routes();
-        this.startDB()
+        
     }
 
     async startDB() {
         try{
-            await connectDB("mongodb+srv://Lucas:lsm281099@nodeexpressprojects.cfhyv.mongodb.net/20-JOBIFY?retryWrites=true&w=majority");
-            
+            await connectDB(process.env.MONGO_URL);
+          
         }
         catch(err) {
             console.log(err);
