@@ -9,13 +9,13 @@ describe("Insert User", () => {
        
         let user = {
             name: "Lucas",
-            email: "lucas.magaldi@hotmail.commmm",
+            email: "lucas.magaldi@hotmail.commmmm",
             password: "hahahaha"
         }
 
         return request.post("/user").send(user)
             .then(res => {
-                expect(res.status).toEqual(500);
+                expect(res.status).toEqual(400);
                 expect(res.body.response).toEqual(true)
             }).catch(err => {
                 console.log(err)
