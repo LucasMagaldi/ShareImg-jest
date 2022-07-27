@@ -9,7 +9,7 @@ describe("Insert User", () => {
        
         let user = {
             name: "Lucas",
-            email: "lucas.magaldi@hotmail.commmmm",
+            email: "lucas.magaldi@hotmail.commmMmm",
             password: "hahahaha"
         }
 

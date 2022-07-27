@@ -18,13 +18,10 @@ class AuthController {
                     response: "Your password must contain more then 8 characteres"
                 });
             }
-
-            const userExist = await authServices.FindByEmail(email);
-            if (userExist) return res.status(400).json({response: "Email alredy registered"})
-           // await new Test.create({name: name, email: email, password: password});
-            await User.create({name, email, password});
-           
-         return res.status(200).json({response: true});   
+            const user = await authServices.CreateUser(name, email, password);
+            if (user === "Email alredy registered" ) return res.status(400).json({response: "Email alredy registered"})
+               
+            if(user) return res.status(200).json({response: true});   
         } catch (error) {
             console.log(error)
             return res.status(500).json({
