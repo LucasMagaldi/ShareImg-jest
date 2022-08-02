@@ -26,10 +26,9 @@ class AuthServices {
 
             const validatedPassword = await bcrypt.compare(pass, password);
             if(!validatedPassword) return "Invalid password"
-
-            const session = await Session.create({name, email})
-            console.log(session);
-            return user
+            
+            const { _id } = await Session.create({name, email})
+            return { _id, name}
         } catch (error) {
             
         }

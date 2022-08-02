@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import validator from "validator";
 
 
-const SessionSchema = new mongoose.Schema({
+const SchemaSession = new mongoose.Schema({
     name: {
         type: String,
         maxlength: 40,
@@ -10,10 +10,9 @@ const SessionSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        unique: true
     }
 });
 
 
 
-export default mongoose.model('Session', SessionSchema);
+export default mongoose.model('Sessions', SchemaSession);

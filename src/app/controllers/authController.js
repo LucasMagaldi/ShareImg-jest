@@ -43,7 +43,17 @@ class AuthController {
                 return res.status(401).json({response: "Incorrect credentials"})
             }
 
-            return res.status(200).json({response: user});
+            const { _id, name } = user;
+
+            return res.status(200).json({
+                status: true,
+                response: jwt
+                    .sign(
+                        {id: _id, name},
+                        "98u489udo9od90oji",
+                        {expiresIn: "1h"}
+                    )
+            });
         } catch (error) {
             console.log(error)
             return res.status(500).json({
