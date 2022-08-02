@@ -13,6 +13,8 @@ class Routes  {
         });
         
         this.routes.post('/user', authController.Register);
+        //Authentication routes
+        this.routes.post('/auth/login', authController.Login);  
      
     }
 }

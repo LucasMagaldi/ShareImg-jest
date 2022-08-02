@@ -30,7 +30,20 @@ class AuthController {
         }
     }
 
+    async Login(req,res) {
+        try {
+            const { email, password } = req.body;
+
+            return res.status(200).json({response: req.body});
+        } catch (error) {
+            console.log(error)
+            return res.status(500).json({
+                response: "An error happen. Please try again in few minutes"
+            });
+        }
+    }
+
 }
 
 
-export default new AuthController();
+export default new AuthController(); 
