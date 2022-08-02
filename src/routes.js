@@ -1,4 +1,6 @@
 import { Router } from "express";
+
+import JWT from "./app/middlewares/JWT.js";
 import authController from "./app/controllers/authController.js";
 
 class Routes  {
@@ -15,6 +17,8 @@ class Routes  {
         this.routes.post('/user', authController.Register);
         //Authentication routes
         this.routes.post('/auth/login', authController.Login);  
+        this.routes.use(JWT);
+        this.routes.get('/testing', authController.Testing);
      
     }
 }

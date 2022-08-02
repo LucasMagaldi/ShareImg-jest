@@ -1,9 +1,17 @@
-import User from "../models/User.js";
-import Test from "../models/Test.js";
-import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
+
 import authServices from "../services/authServices.js";
 
+dotenv.config();
+
+const jwt_secret = process.env.JWT_SECRET;
+
 class AuthController {
+
+    async Testing(req,res) {
+        return res.status(200).json({x:req.name});
+    }
 
     async Register(req, res) {
         try {
@@ -50,7 +58,7 @@ class AuthController {
                 response: jwt
                     .sign(
                         {id: _id, name},
-                        "98u489udo9od90oji",
+                        jwt_secret,
                         {expiresIn: "1h"}
                     )
             });
