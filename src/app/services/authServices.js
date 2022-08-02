@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import User from "../models/User.js";
+import Session from '../models/Session.js';
 
 class AuthServices {
 
@@ -21,13 +22,14 @@ class AuthServices {
         try {
             const user = await this.BringDataByEmail(email);
             if(user === null) return "No user founded"
-            const { password } = user
+            const { password, name } = user
 
             const validatedPassword = await bcrypt.compare(pass, password);
             if(!validatedPassword) return "Invalid password"
 
-            
-            return password
+            const session = await Session.create({name, email})
+            console.log(session);
+            return user
         } catch (error) {
             
         }
