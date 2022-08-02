@@ -26,7 +26,7 @@ describe("Insert User", () => {
     it("Should Sign-in", () => {
 
         let user = {
-            email: "lucas.magaldi@hotmail.commmMmm",
+            email: "MAGALDERA.CO",
             password: "hahahaha"
         }
 

@@ -34,8 +34,16 @@ class AuthController {
     async Login(req,res) {
         try {
             const { email, password } = req.body;
+            //const user = await authServices.BringDataByEmail(email);
+            const user = await authServices.Login(email, password);
+            if (user === "No user founded") {
+                return res.status(400).json({response: "You are not register yet"})
+            } 
+            if(user === "Invalid password") {
+                return res.status(401).json({response: "Incorrect credentials"})
+            }
 
-            return res.status(200).json({response: req.body});
+            return res.status(200).json({response: user});
         } catch (error) {
             console.log(error)
             return res.status(500).json({

@@ -17,9 +17,17 @@ class AuthServices {
         }
     }
 
-    async Login(email, password) {
+    async Login(email, pass) {
         try {
+            const user = await this.BringDataByEmail(email);
+            if(user === null) return "No user founded"
+            const { password } = user
+
+            const validatedPassword = await bcrypt.compare(pass, password);
+            if(!validatedPassword) return "Invalid password"
+
             
+            return password
         } catch (error) {
             
         }
@@ -28,8 +36,18 @@ class AuthServices {
     async FindByEmail(email) {
         try {
             const user = await User.findOne({email});
-            console.log(`HERE: ${! !user}`)
             return ! !user
+        } catch (error) {
+            
+        }
+    }
+
+    async BringDataByEmail(email) {
+        try {
+            const user = await User.findOne({email});
+            //if(user === null) return "No data founded"
+
+            return user
         } catch (error) {
             
         }
