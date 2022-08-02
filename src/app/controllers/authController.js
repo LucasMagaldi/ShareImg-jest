@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import Test from "../models/Test.js";
+import jwt from 'jsonwebtoken'
 import authServices from "../services/authServices.js";
 
 class AuthController {

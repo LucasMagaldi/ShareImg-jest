@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/LucasMagaldi/ShareImg-jest#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "jest": "^28.1.1",
